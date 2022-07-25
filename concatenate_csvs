@@ -1,0 +1,13 @@
+import pandas as pd
+import os
+
+col_list = ["SECTOR_ID"]
+file_folder = 'C:/Users/ADM_KPapagi1/PycharmProjects/old_sectors/cellrefcompare'
+df =[]
+for file in os.listdir(file_folder):
+    if file.endswith('.csv'):
+        df.append(pd.read_csv(os.path.join(file_folder, file), usecols=col_list))
+
+
+df_final = pd.concat(df)
+df_final.to_csv('final_file.csv', index=False)
